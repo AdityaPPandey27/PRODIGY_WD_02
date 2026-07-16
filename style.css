@@ -1,0 +1,308 @@
+/* ==========================
+   CSS VARIABLES & RESET
+   ========================== */
+:root {
+    /* Color Palette */
+    --bg-color: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --success: #22c55e;
+    --success-hover: #16a34a;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --warning: #f59e0b;
+    --warning-hover: #d97706;
+    --secondary: rgba(255, 255, 255, 0.2);
+    --secondary-hover: rgba(255, 255, 255, 0.3);
+    
+    /* Text Colors */
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    
+    /* Effects */
+    --glow-primary: 0 0 20px rgba(59, 130, 246, 0.4);
+    --shadow-soft: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at center, #1e293b 0%, var(--bg-color) 100%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* ==========================
+   MAIN CARD (GLASSMORPHISM)
+   ========================== */
+.card-container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-soft);
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ==========================
+   HEADER & STATUS
+   ========================== */
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.stopped { background: var(--danger); }
+.dot.running { 
+    background: var(--success);
+    box-shadow: 0 0 10px var(--success);
+    animation: pulse 1.5s infinite; 
+}
+.dot.paused { background: var(--warning); }
+
+.keyboard-hints {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* ==========================
+   TIMER DISPLAY
+   ========================== */
+.timer-section {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.timer-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    transition: text-shadow 0.3s ease;
+}
+
+.timer-display.active-glow {
+    text-shadow: var(--glow-primary);
+}
+
+.timer-display .colon {
+    margin: 0 4px;
+    opacity: 0.7;
+}
+
+.timer-display .ms {
+    font-size: 2rem; /* Make milliseconds slightly smaller */
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
+/* ==========================
+   BUTTON CONTROLS
+   ========================== */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn.hidden {
+    display: none;
+}
+
+/* Button Variants */
+.btn-primary { background: var(--primary); }
+.btn-primary:hover { background: var(--primary-hover); box-shadow: var(--glow-primary); }
+
+.btn-success { background: var(--success); }
+.btn-success:hover { background: var(--success-hover); box-shadow: 0 0 15px rgba(34, 197, 94, 0.4); }
+
+.btn-danger { background: var(--danger); }
+.btn-danger:hover { background: var(--danger-hover); box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+
+.btn-warning { background: var(--warning); color: #000; }
+.btn-warning:hover { background: var(--warning-hover); box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
+
+.btn-secondary { background: var(--secondary); border: 1px solid rgba(255, 255, 255, 0.1); }
+.btn-secondary:hover:not(:disabled) { background: var(--secondary-hover); }
+
+/* ==========================
+   LAPS SYSTEM
+   ========================== */
+.laps-section {
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.5rem;
+}
+
+.laps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.laps-header h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.laps-container {
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-right: 0.5rem; /* Space for scrollbar */
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.laps-container::-webkit-scrollbar { width: 6px; }
+.laps-container::-webkit-scrollbar-track { background: transparent; }
+.laps-container::-webkit-scrollbar-thumb { 
+    background: rgba(255,255,255,0.2); 
+    border-radius: 10px; 
+}
+.laps-container::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    padding: 2rem 0;
+}
+
+.lap-item {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    animation: fadeInLap 0.4s ease forwards;
+}
+
+.lap-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.lap-number {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.lap-diff {
+    color: var(--primary);
+}
+
+/* ==========================
+   ANIMATIONS
+   ========================== */
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInLap {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   MEDIA QUERIES
+   ========================== */
+@media (max-width: 600px) {
+    .timer-display { font-size: 2.5rem; }
+    .timer-display .ms { font-size: 1.5rem; }
+    .keyboard-hints { display: none; }
+    .card-container { padding: 1.5rem 1rem; gap: 1.5rem; border-radius: 16px; }
+}
