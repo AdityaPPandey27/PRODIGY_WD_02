@@ -1,3 +1,49 @@
-A modern, premium, and highly accurate stopwatch built with Vanilla JavaScript.
+<div align="center">
+  <h1>⏱️ Stopwatch Web Application</h1>
+  <p><i>A modern, premium, and highly accurate stopwatch built with Vanilla JavaScript.</i></p>
+</div>
 
-A beautifully crafted, high-precision stopwatch web application designed with a sleek glassmorphism interface. This project utilizes HTML5, CSS3, and Vanilla JavaScript (leveraging the `performance.now()` API for drift-free accuracy) to deliver a seamless and responsive user experience without relying on any external frameworks or libraries. --- ## 📌 Features - **Start stopwatch**: Begin timing with high-precision accuracy. - **Pause stopwatch**: Temporarily halt the timer without losing progress. - **Resume stopwatch**: Continue timing exactly where you left off. - **Reset stopwatch**: Clear all times, laps, and return the UI to its initial state. - **Record unlimited lap times**: Save an infinite number of splits during a session. - **Display lap history**: Auto-scrolling list showing lap number, lap time, and total elapsed time. - **High-precision timer**: Accurate down to the millisecond, preventing browser-throttling drift. - **Responsive design**: Flawlessly adapts to Desktop, Tablet, and Mobile screens. - **Modern Glassmorphism UI**: Premium aesthetic with blur effects, soft shadows, and gradients. - **Keyboard shortcuts**: Full keyboard accessibility for core functions. - **Smooth animations**: Hover states, fade-ins, and active glow effects. - **Mobile-friendly layout**: Controls adapt and wrap intelligently on smaller viewports. --- ## 🛠️ Technologies Used This project is built using pure web standards. No external libraries, frameworks, or dependencies are required. | Technology | Purpose | |:---:|---| | **HTML5** | Semantic structure, accessibility features, and layout skeleton. | | **CSS3** | Glassmorphism styling, responsive media queries, CSS variables, and animations. | | **JavaScript (ES6+)** | High-performance timing logic, DOM manipulation, and event handling. | --- ## 📂 Project Structure ```text Stopwatch-Web-Application/ │ ├── index.html # Main HTML structure ├── style.css # Glassmorphism UI and responsive styles ├── script.js # Core timing logic and DOM interactions ├── README.md # Project documentation └── assets/ └── screenshots/ # Folder for UI preview images ``` --- ## 🚀 Getting Started This application runs directly in your browser. No build steps, package managers, or local servers are required. 1. **Clone the repository:** ```bash git clone https://github.com/yourusername/Stopwatch-Web-Application.git ``` 2. **Navigate to the folder:** ```bash cd Stopwatch-Web-Application ``` 3. **Open the application:** Simply double-click on `index.html` to open it in your default web browser. --- ## 🎮 Keyboard Shortcuts Control the stopwatch hands-free using these built-in hotkeys: | Key | Action | |:---:|---| | Space | Start / Pause | | L | Record Lap | | R | Reset | --- ## 📸 Screenshots ### Home Screen ![Home Screen UI showing the 00:00:00:000 state](assets/screenshots/home-screen.png) ### Running Stopwatch ![Running Stopwatch with active glow and pulse indicator](assets/screenshots/running.png) ### Lap Records ![Lap history showing multiple recorded splits](assets/screenshots/laps.png) --- ## ⚙️ How It Works Under the hood, the stopwatch uses a continuous event loop to maintain accuracy: - **Start:** Captures the current timestamp using `performance.now()` and initiates a `requestAnimationFrame` loop for silky smooth 60fps updates. - **Pause:** Halts the animation frame and stores the exact elapsed time, preventing any drift while inactive. - **Resume:** Recalculates a new starting anchor relative to the already elapsed time. - **Reset:** Clears all state variables, wipes the laps array, and visually resets the DOM. - **Lap:** Calculates the difference between the current elapsed time and the previous lap marker, pushing the record to an array and rendering it at the top of the lap list. --- ## 🎨 UI Features The interface was designed with a focus on modern web aesthetics: - **Glassmorphism:** Frosted glass effect using `backdrop-filter`. - **Gradient Background:** Deep radial gradients for a premium dark-mode feel. - **Responsive Layout:** Flexbox and Grid based alignment that scales perfectly. - **Hover Effects:** Interactive scaling and dynamic drop-shadows on buttons. - **Button Animations:** Tactile feedback on click events. - **Smooth Transitions:** Elegant fade-ins for lap generation and card entrances. - **Modern Typography:** Monospace fonts for numbers to prevent layout shifting. --- ## 📈 Future Improvements While the core functionality is complete, the following features are planned for future releases: - Dark/Light Theme Toggle - Export Lap Times (CSV/TXT) - Save Sessions in Local Storage (persist data on reload) - Sound Effects for button presses - Multiple Stopwatch Instances on a single page - Custom Color Themes - Statistics Dashboard (Average lap time, fastest lap, slowest lap) --- ## 🤝 Contributing Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues). 1. Fork the Project 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`) 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`) 4. Push to the Branch (`git push origin feature/AmazingFeature`) 5. Open a Pull Request --- ## 📄 License This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. --- ## 👨‍💻 Author **[Your Name]** - GitHub: @yourusername - LinkedIn: Your LinkedIn Profile - Portfolio: yourwebsite.com --- ## ⭐ Support If you found this project helpful, learned something from the code, or plan to use it in your own portfolio, please give it a ⭐️!
+A beautifully crafted, high-precision stopwatch web application designed with a sleek glassmorphism interface. This project utilizes HTML5, CSS3, and Vanilla JavaScript (leveraging the `performance.now()` API for drift-free accuracy) to deliver a seamless and responsive user experience without relying on any external frameworks or libraries. 
+
+---
+
+## 📌 Features
+
+- **Start stopwatch**: Begin timing with high-precision accuracy.
+- **Pause stopwatch**: Temporarily halt the timer without losing progress.
+- **Resume stopwatch**: Continue timing exactly where you left off.
+- **Reset stopwatch**: Clear all times, laps, and return the UI to its initial state.
+- **Record unlimited lap times**: Save an infinite number of splits during a session.
+- **Display lap history**: Auto-scrolling list showing lap number, lap time, and total elapsed time.
+- **High-precision timer**: Accurate down to the millisecond, preventing browser-throttling drift.
+- **Responsive design**: Flawlessly adapts to Desktop, Tablet, and Mobile screens.
+- **Modern Glassmorphism UI**: Premium aesthetic with blur effects, soft shadows, and gradients.
+- **Keyboard shortcuts**: Full keyboard accessibility for core functions.
+- **Smooth animations**: Hover states, fade-ins, and active glow effects.
+- **Mobile-friendly layout**: Controls adapt and wrap intelligently on smaller viewports.
+
+---
+
+## 🛠️ Technologies Used
+
+This project is built using pure web standards. No external libraries, frameworks, or dependencies are required.
+
+| Technology | Purpose |
+|:---:|---|
+| **HTML5** | Semantic structure, accessibility features, and layout skeleton. |
+| **CSS3** | Glassmorphism styling, responsive media queries, CSS variables, and animations. |
+| **JavaScript (ES6+)** | High-performance timing logic, DOM manipulation, and event handling. |
+
+---
+
+## 📂 Project Structure
+
+```text
+Stopwatch-Web-Application/
+│
+├── index.html       # Main HTML structure
+├── style.css        # Glassmorphism UI and responsive styles
+├── script.js        # Core timing logic and DOM interactions
+├── README.md        # Project documentation
+└── assets/          
+    └── screenshots/ # Folder for UI preview images
